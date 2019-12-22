@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B8C08A3-6EA2-4812-820A-45B070895150}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2A0148A4-9812-4B09-94A6-3D8032D55514}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A2ECC601-A0E2-4D84-8DF7-B3DD95C64288}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackableUi.Component", "src\StackableUi.Component\StackableUi.Component.csproj", "{120D52D7-8E24-4920-ADAE-1A54D2680DF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{3BB1F62F-A90F-40E9-BDD0-CA950293ECC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackableUi.Samples", "samples\StackableUi.Samples\StackableUi.Samples.csproj", "{E80759ED-4CF1-44A4-92AB-255E7398675C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{120D52D7-8E24-4920-ADAE-1A54D2680DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120D52D7-8E24-4920-ADAE-1A54D2680DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120D52D7-8E24-4920-ADAE-1A54D2680DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120D52D7-8E24-4920-ADAE-1A54D2680DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E80759ED-4CF1-44A4-92AB-255E7398675C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E80759ED-4CF1-44A4-92AB-255E7398675C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E80759ED-4CF1-44A4-92AB-255E7398675C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E80759ED-4CF1-44A4-92AB-255E7398675C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{120D52D7-8E24-4920-ADAE-1A54D2680DF0} = {5B8C08A3-6EA2-4812-820A-45B070895150}
+		{E80759ED-4CF1-44A4-92AB-255E7398675C} = {3BB1F62F-A90F-40E9-BDD0-CA950293ECC0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2C5EC4C-164D-46D2-8055-6673C03656DB}
+	EndGlobalSection
+EndGlobal
