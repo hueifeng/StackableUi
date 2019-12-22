@@ -8,6 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2A0148A4-9812-4B09-94A6-3D8032D55514}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A2ECC601-A0E2-4D84-8DF7-B3DD95C64288}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackableUi.Component", "src\StackableUi.Component\StackableUi.Component.csproj", "{120D52D7-8E24-4920-ADAE-1A54D2680DF0}"
 EndProject
