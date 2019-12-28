@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackableUi.Component", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{3BB1F62F-A90F-40E9-BDD0-CA950293ECC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackableUi.Samples", "samples\StackableUi.Samples\StackableUi.Samples.csproj", "{E80759ED-4CF1-44A4-92AB-255E7398675C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackableUi.Samples", "samples\StackableUi.Samples\StackableUi.Samples.csproj", "{E80759ED-4CF1-44A4-92AB-255E7398675C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

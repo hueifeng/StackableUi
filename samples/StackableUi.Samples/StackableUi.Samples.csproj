@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\StackableUi.Component\StackableUi.Component.csproj" />
+  </ItemGroup>
+
 </Project>
