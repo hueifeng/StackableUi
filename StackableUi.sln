@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		_config.yml = _config.yml
+		CNAME = CNAME
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
