@@ -13,43 +13,55 @@
     }
     var buttonSize = string.Empty;
 
-    if (Size!=null)
+    if (Size != null)
     {
         buttonSize = $"ivu-btn-{Size.ToString().ToLower()}";
     }
-    var clslong =string.Empty;
+    var clslong = string.Empty;
     if (Long)
     {
         clslong = "ivu-btn-long";
     }
+    if (Loading)
+    {
+        Icon = "ivu-load-loop ivu-icon ivu-icon-ios-loading";
+    }
 
-    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape} {buttonSize} {clslong}";
+   
+
+    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape} {buttonSize} {clslong} ivu-btn-loading";
 
 
 }
     <button type="button" disabled="@Disabled" class="@clas">
+
         @if (!string.IsNullOrEmpty(Icon))
         {
             <i class="@Icon"></i>
         }
-        <span>@ChildContent</span>
+        else
+        {
+            <span>@ChildContent</span>
+        }
     </button>
 
 
 @code {
 
     [Parameter] public RenderFragment ChildContent { get; set; }
-    [Parameter] public bool ghost{ get; set; }
+    [Parameter] public bool ghost { get; set; }
 
     [Parameter]
     public bool shape { get; set; }
 
-    [Parameter]public string Icon { get; set; }
+    [Parameter] public string Icon { get; set; }
 
-    [Parameter]public ButtonSize? Size { get; set; }
+    [Parameter] public ButtonSize? Size { get; set; }
 
     [Parameter]
     public bool Long { get; set; }
     [Parameter]
     public bool Disabled { get; set; }
+    [Parameter]
+    public bool Loading { get; set; }
 }
