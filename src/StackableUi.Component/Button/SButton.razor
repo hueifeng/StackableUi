@@ -1,12 +1,18 @@
 ﻿@inherits ButtonBase
 
 @{
-    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()}";
+    string clsghost = string.Empty;
+    if (ghost)
+    {
+        clsghost = "ivu-btn-ghost";
+    }
+
+    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost}";
 }
-<button type="button" class="@clas"><span>@ChildContent</span></button>
+<button type="button" class="@clas" ><span>@ChildContent</span></button>
 
 
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
-
+    [Parameter] public bool ghost{ get; set; }
 }
