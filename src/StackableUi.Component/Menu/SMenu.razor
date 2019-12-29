@@ -1,0 +1,11 @@
+﻿@inherits MenuBase
+<ul class="ivu-menu ivu-menu-light ivu-menu-vertical">
+    @ChildContent
+
+</ul>
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+}
+
+
