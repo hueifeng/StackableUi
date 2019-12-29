@@ -22,11 +22,12 @@
     {
         clslong = "ivu-btn-long";
     }
+
     string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape} {buttonSize} {clslong}";
 
 
 }
-    <button type="button" class="@clas">
+    <button type="button" disabled="@Disabled" class="@clas">
         @if (!string.IsNullOrEmpty(Icon))
         {
             <i class="@Icon"></i>
@@ -49,4 +50,6 @@
 
     [Parameter]
     public bool Long { get; set; }
+    [Parameter]
+    public bool Disabled { get; set; }
 }
