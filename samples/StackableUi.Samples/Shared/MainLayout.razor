@@ -1,18 +1,56 @@
 ﻿@inherits LayoutComponentBase
-<div class="layout">
-    <div class="ivu-layout">
-        <div class="ivu-layout-header">
-        </div> <div class="ivu-layout ivu-layout-has-sider">
-            <div class="ivu-layout-sider" style="width: 200px; min-width: 200px; max-width: 200px; flex: 0 0 200px; background: white;">
-                <span class="ivu-layout-sider-zero-width-trigger" style="display: none;"><i class="ivu-icon ivu-icon-ios-menu"></i></span>
-                <div class="ivu-layout-sider-children">
-                    <NavMenu />
-                </div> <div class="ivu-layout-sider-trigger" style="width: 200px; display: none;"><i class="ivu-icon ivu-icon-ios-arrow-back ivu-layout-sider-trigger-icon"></i></div>
-            </div> <div class="ivu-layout" style="padding: 0px 24px 24px;">
-                <div class="ivu-layout-content" style="padding: 24px; min-height: 280px; background: rgb(255, 255, 255);">
-                    @Body
+<div class="wrapper">
+<div class="wrapper-header">
+    <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
+        <div class="wrapper-header-nav">
+            <a href="/" class="wrapper-header-nav-logo router-link-active"><img src="https://file.iviewui.com/dist/7dcf5af41fac2e4728549fa7e73d61c5.svg"></a> <div class="apps">
+                <div class="ivu-dropdown">
+                    <div class="ivu-dropdown-rel">
+                        <button type="button" class="ivu-btn ivu-btn-text">
+                            <span>
+                                Stackable UI
+                                <i class="apps-arrow ivu-icon ivu-icon-ios-arrow-down"></i>
+                            </span>
+                        </button>
+                    </div> <!---->
                 </div>
+            </div> <div class="wrapper-header-nav-search">
+                <div class="ivu-select ivu-select-single ivu-select-default">
+                    <div tabindex="-1" class="ivu-select-selection">
+                        <input type="hidden"> <div class="">
+                            <!----> <!---->
+                            <span class="" style="display: none;"></span>
+                            <input type="text" placeholder="搜索组件..." autocomplete="off" spellcheck="false" class="ivu-select-input">
+                            <!----> <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div> <div class="wrapper-header-nav-list">
+                <a href="https://en.wikipedia.org/wiki/Blazor" target="_self" class="ivu-menu-item">
+                    Blazor
+                </a> <a href="https://www.iviewui.com/" target="_self" class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
+                    Iview UI
+                </a>
+
             </div>
         </div>
+    </ul>
+</div> <div class="wrapper-container">
+   <div class="ivu-row">
+        <div class="wrapper-navigate ivu-col ivu-col-span-4">
+            <div data-v-39279dfe="" class="navigate">
+                <NavMenu />
+            </div>
+        </div>
+        <div class="ivu-col ivu-col-span-17">
+            <div class="wrapper-content ivu-article">
+                @Body
+            </div>
+        </div>
+        <div class="ivu-col ivu-col-span-3">
+           
+            </div>
     </div>
+</div>
 </div>
