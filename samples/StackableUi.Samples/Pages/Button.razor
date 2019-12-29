@@ -1,8 +1,16 @@
 ﻿@page "/button"
 <SButton Type="@EnumButtonType.Success" ghost Icon="ivu-icon ivu-icon-ios-search" Size="@ButtonSize.Small">Success</SButton>
-<SButton Type="@EnumButtonType.Error" ghost Loading>Error</SButton>
+<SButton Type="@EnumButtonType.Error" ghost >Error</SButton>
 <SButton Type="@EnumButtonType.Dashed">Dashed</SButton>
-<SButton Type="@EnumButtonType.Primary"  Size="@ButtonSize.Large">Primary</SButton>
+<SButton Type="@EnumButtonType.Primary" Size="@ButtonSize.Large">Primary</SButton>
 <SButton Type="@EnumButtonType.Default">Default</SButton>
 <SButton Type="@EnumButtonType.Info" Long Disabled>Info</SButton>
 <SButton Type="@EnumButtonType.Warning" shape>Warning</SButton>
+<br />
+
+<SButtonGroup>
+    <SButton Type="@EnumButtonType.Primary">L</SButton>
+    <SButton>M</SButton>
+    <SButton>M</SButton>
+    <SButton Type="@EnumButtonType.Dashed">R</SButton>
+</SButtonGroup>
