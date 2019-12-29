@@ -1,9 +1,13 @@
-﻿<li class="ivu-menu-item">
-    <i class="ivu-icon ivu-icon-logo-youtube"></i>
+﻿@inherits SMenuItemBase
+@using Microsoft.AspNetCore.Components.Web
+<li class="ivu-menu-item"
+    @onclick="OnClick">
+    <i class="@Icon"></i>
     @ChildContent
 </li>
 
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Icon { get; set; }
 
 }

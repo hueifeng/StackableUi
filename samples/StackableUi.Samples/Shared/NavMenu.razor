@@ -1,20 +1,33 @@
 ﻿<SMenu>
     <SMenuGroup Title="基础">
-        <SMenuItem>Button 按钮</SMenuItem>
-       
+        <SMenuItem Icon="ivu-icon ivu-icon-logo-youtube" Route="button">Button 按钮</SMenuItem>
+
     </SMenuGroup>
     <SMenuGroup Title="导航">
-        <SMenuItem>Menu 导航菜单</SMenuItem>
+        <SMenuItem Icon="ivu-icon ivu-icon-ios-menu" Route="menu">Menu 导航菜单</SMenuItem>
     </SMenuGroup>
 </SMenu>
 
 @*@code {
-    private bool collapseNavMenu = true;
+        private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+        private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
+        private void ToggleNavMenu()
+        {
+            collapseNavMenu = !collapseNavMenu;
+        }
+    }*@
+@code {
+
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+    protected override void OnInitialized()
     {
-        collapseNavMenu = !collapseNavMenu;
+        if (new Uri(NavigationManager.Uri).LocalPath == "/")
+        {
+            NavigationManager.NavigateTo("button");
+        }
     }
-}*@
+}
+
