@@ -17,8 +17,12 @@
     {
         buttonSize = $"ivu-btn-{Size.ToString().ToLower()}";
     }
-
-    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape} {buttonSize}";
+    var clslong =string.Empty;
+    if (Long)
+    {
+        clslong = "ivu-btn-long";
+    }
+    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape} {buttonSize} {clslong}";
 
 
 }
@@ -43,4 +47,6 @@
 
     [Parameter]public ButtonSize? Size { get; set; }
 
+    [Parameter]
+    public bool Long { get; set; }
 }
