@@ -6,8 +6,12 @@
     {
         clsghost = "ivu-btn-ghost";
     }
-
-    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost}";
+    string clsshape = string.Empty;
+    if (shape)
+    {
+        clsshape = "ivu-btn-circle";
+    }
+    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()} {clsghost} {clsshape}";
 }
 <button type="button" class="@clas" ><span>@ChildContent</span></button>
 
@@ -15,4 +19,8 @@
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public bool ghost{ get; set; }
+
+    [Parameter]
+    public bool shape { get; set; }
+
 }
