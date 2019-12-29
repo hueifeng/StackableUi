@@ -1,12 +1,12 @@
 ﻿@inherits ButtonBase
 
-    <div>
-        <button type="button" class="ivu-btn ivu-btn-primary"><span>@Type.ToString()</span></button>
-    </div>
-
+@{
+    string clas = $"ivu-btn ivu-btn-{Type.ToString().ToLower()}";
+}
+<button type="button" class="@clas"><span>@ChildContent</span></button>
 
 
 @code {
-    [Parameter]public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
 
 }
