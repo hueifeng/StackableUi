@@ -1,11 +1,63 @@
-﻿
-<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
-    <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-    <input autocomplete="off" spellcheck="false" type="text" placeholder="@Placeholder" class="ivu-input ivu-input-default">
-</div>
+﻿@{
+
+    var inputSize = "ivu-input-default";
+
+    if (Size != null)
+    {
+        inputSize = $"ivu-input-{Size.ToString().ToLower()}";
+    }
+
+    string clas = $"ivu-input {inputSize}";
+}
+
+
+    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
+        @{
+            if (Clearable)
+            {
+                <!--clearable -->
+                <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
+            }
+        }
+
+
+        <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+        <input autocomplete="off" @onchange="OnChangeEventArgs" spellcheck="false" @onfocus="OnFocusAsync" type="text" placeholder="@Placeholder" class="@clas" value="@Value">
+    </div>
 
 @code {
-   [Parameter]public string Placeholder { get; set; }
+    [Parameter] public string Placeholder { get; set; }
 
-   [Parameter]public string Style { get; set; }
+    [Parameter] public string Style { get; set; }
+
+    [Parameter] public InputSize? Size { get; set; }
+
+    [Parameter] public string Value { get; set; }
+    /// <summary>
+    ///     开启属性 Clearable 可显示清空按钮。
+    /// </summary>
+    [Parameter] public bool Clearable { get; set; }
+
+
+    protected void OnClickClear()
+    {
+
+        this.Value =default;
+
+    }
+
+    protected virtual Task OnFocusAsync()
+    {
+        if (Value == null)
+        {
+            Value = default;
+        }
+        return Task.CompletedTask;
+    }
+
+    protected virtual void OnChangeEventArgs(ChangeEventArgs input)
+    {
+        Value = (string)input.Value;
+    }
+
 }
