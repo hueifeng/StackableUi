@@ -11,38 +11,59 @@
 }
 
 
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
-        @{
-            if (Clearable)
-            {
-                <!--clearable -->
-                <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
-            }
+<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
+
+    @{
+        if (ShowWordLimit)
+        {
+            <span class="ivu-input-word-count">@CurrentLength/@MaxLength</span>
         }
+    }
+
+    @{
+        if (Clearable)
+        {
+            <!--clearable -->
+            <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
+        }
+    }
 
 
-        <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-        <input autocomplete="off" @onchange="OnChangeEventArgs" spellcheck="false" @onfocus="OnFocusAsync" type="text" placeholder="@Placeholder" class="@clas" value="@Value">
-    </div>
+    <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+    <input autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" type="text" placeholder="@Placeholder" class="@clas" value="@Value">
+</div>
 
 @code {
     [Parameter] public string Placeholder { get; set; }
 
     [Parameter] public string Style { get; set; }
-
+    /// <summary>
+    ///     尺寸
+    /// </summary>
     [Parameter] public InputSize? Size { get; set; }
 
     [Parameter] public string Value { get; set; }
     /// <summary>
+    ///    开启属性 show-word-limit 可以显示字数统计，需配合 maxlength 属性来限制输入长度。
+    /// </summary>
+    [Parameter] public bool ShowWordLimit { get; set; }
+    /// <summary>
+    ///    maxlength
+    /// </summary>
+    [Parameter] public int MaxLength { get; set; } = 1024000;
+    /// <summary>
     ///     开启属性 Clearable 可显示清空按钮。
     /// </summary>
     [Parameter] public bool Clearable { get; set; }
-
+    /// <summary>
+    ///     当前字符串长度
+    /// </summary>
+    private int CurrentLength { get; set; }
 
     protected void OnClickClear()
     {
 
-        this.Value =default;
+        this.Value = default;
 
     }
 
@@ -55,9 +76,15 @@
         return Task.CompletedTask;
     }
 
-    protected virtual void OnChangeEventArgs(ChangeEventArgs input)
+
+    protected void OnInputEventArgs(ChangeEventArgs input)
     {
         Value = (string)input.Value;
+        if (ShowWordLimit)
+        {
+            CurrentLength = Value.Length;
+        }
+
     }
 
 }
