@@ -1,0 +1,13 @@
+﻿
+<label  class="ivu-radio-wrapper ivu-radio-wrapper-checked ivu-radio-default">
+    <span class="ivu-radio">
+        <span class="ivu-radio-inner"></span>
+        <input type="radio" class="ivu-radio-input">
+    </span>
+    @ChildContent
+</label>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}
