@@ -1,9 +1,11 @@
 ﻿
-<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="width: 300px;">
+<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
     <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
     <input autocomplete="off" spellcheck="false" type="text" placeholder="@Placeholder" class="ivu-input ivu-input-default">
 </div>
 
 @code {
    [Parameter]public string Placeholder { get; set; }
+
+   [Parameter]public string Style { get; set; }
 }
