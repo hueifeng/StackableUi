@@ -1,11 +1,26 @@
-﻿
+﻿@{
+
+    var inputSize = "ivu-input-default";
+
+    if (Size != null)
+    {
+        inputSize = $"ivu-input-{Size.ToString().ToLower()}";
+    }
+
+
+    string clas = $"ivu-input {inputSize}";
+}
+
+
 <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
     <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-    <input autocomplete="off" spellcheck="false" type="text" placeholder="@Placeholder" class="ivu-input ivu-input-default">
+    <input autocomplete="off" spellcheck="false" type="text" placeholder="@Placeholder" class="@clas">
 </div>
 
 @code {
-   [Parameter]public string Placeholder { get; set; }
+    [Parameter] public string Placeholder { get; set; }
 
-   [Parameter]public string Style { get; set; }
+    [Parameter] public string Style { get; set; }
+
+    [Parameter] public InputSize? Size { get; set; }
 }
