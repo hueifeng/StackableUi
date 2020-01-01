@@ -6,18 +6,12 @@
     <SMenuGroup Title="导航">
         <SMenuItem Icon="ivu-icon ivu-icon-ios-menu" Route="menu">Menu 导航菜单</SMenuItem>
     </SMenuGroup>
+    <SMenuGroup Title="表单">
+        <SMenuItem Icon="ivu-icon ivu-icon-ios-create-outline" Route="input">Input 输入框</SMenuItem>
+    </SMenuGroup>
+
 </SMenu>
 
-@*@code {
-        private bool collapseNavMenu = true;
-
-        private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-        private void ToggleNavMenu()
-        {
-            collapseNavMenu = !collapseNavMenu;
-        }
-    }*@
 @code {
 
     [Inject]
