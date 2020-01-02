@@ -7,6 +7,7 @@
     }
 
     string clas = $"ivu-input {inputSize}";
+
 }
 @{
     if (Type == InputType.TextArea)
@@ -30,17 +31,23 @@
             }
 
 
-
             @if (Clearable)
             {
                 <!--clearable -->
                 <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
             }
 
-
+            @if (Type == InputType.PassWord||IsEye==true)
+            {
+                <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
+                    <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
+                </span>
+            }
             <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
             <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
         </div>
+
+
     }
 
 }
@@ -50,7 +57,6 @@
 
 
 @code {
-
     [Parameter] public string Placeholder { get; set; }
 
     [Parameter] public string Style { get; set; }
@@ -81,6 +87,9 @@
     /// </summary>
     [Parameter] public InputType Type { get; set; } = InputType.Text;
 
+    private bool IsEye { get; set; }
+
+
     protected void OnClickClear()
     {
         this.Value = default;
@@ -106,4 +115,18 @@
 
     }
 
+    protected  void OnClickEyeAsync()
+    {
+        if (IsEye)
+        {
+            IsEye = false;
+            Type = InputType.PassWord;
+        }
+        else
+        {
+            IsEye = true;
+            Type = InputType.Text;
+        }
+
+    }
 }
