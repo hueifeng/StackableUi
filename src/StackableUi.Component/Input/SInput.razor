@@ -50,16 +50,22 @@
 
 
 @code {
-
+    /// <summary>
+    ///     占位文字
+    /// </summary>
     [Parameter] public string Placeholder { get; set; }
-
+    /// <summary>
+    ///     样式
+    /// </summary>
     [Parameter] public string Style { get; set; }
     /// <summary>
     ///     尺寸
     /// </summary>
     [Parameter] public InputSize? Size { get; set; }
-
-    [Parameter] public string Value { get; set; }
+    /// <summary>
+    ///     值
+    /// </summary>
+    private string Value { get; set; }
     /// <summary>
     ///    开启属性 show-word-limit 可以显示字数统计，需配合 maxlength 属性来限制输入长度。
     /// </summary>
@@ -80,7 +86,9 @@
     ///     Input类型 <see cref="InputType"/>
     /// </summary>
     [Parameter] public InputType Type { get; set; } = InputType.Text;
-
+    /// <summary>
+    ///     清空内容
+    /// </summary>
     protected void OnClickClear()
     {
         this.Value = default;
@@ -95,7 +103,10 @@
         return Task.CompletedTask;
     }
 
-
+    /// <summary>
+    ///     OnInput事件
+    /// </summary>
+    /// <param name="input"></param>
     protected void OnInputEventArgs(ChangeEventArgs input)
     {
         Value = (string)input.Value;
