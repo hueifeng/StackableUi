@@ -24,6 +24,10 @@
     else
     {
         <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
+            @if (!string.IsNullOrEmpty(Icon))
+            {
+                <i class="@Icon"></i>
+            }
 
             @if (ShowWordLimit)
             {
@@ -37,7 +41,7 @@
                 <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
             }
 
-            @if (Type == InputType.PassWord||IsEye==true)
+            @if (Type == InputType.PassWord || IsEye == true)
             {
                 <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
                     <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
@@ -88,7 +92,10 @@
     [Parameter] public InputType Type { get; set; } = InputType.Text;
 
     private bool IsEye { get; set; }
-
+    /// <summary>
+    ///     图标
+    /// </summary>
+    [Parameter] public string Icon { get; set; }
 
     protected void OnClickClear()
     {
@@ -115,7 +122,7 @@
 
     }
 
-    protected  void OnClickEyeAsync()
+    protected void OnClickEyeAsync()
     {
         if (IsEye)
         {
