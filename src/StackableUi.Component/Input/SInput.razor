@@ -1,12 +1,23 @@
 ﻿@{
     var inputSize = "ivu-input-default";
-
+    var prefixclas = string.Empty;
+    var suffixclas = string.Empty;
     if (Size != null)
     {
         inputSize = $"ivu-input-{Size.ToString().ToLower()}";
     }
 
-    string clas = $"ivu-input {inputSize}";
+    if (!string.IsNullOrEmpty(Prefix))
+    {
+        prefixclas = "ivu-input-with-prefix";
+    }
+
+    if (!string.IsNullOrEmpty(Suffix))
+    {
+        suffixclas = "ivu-input-with-suffix";
+    }
+
+    var clas = $"ivu-input {inputSize} {prefixclas} {suffixclas}";
 
 }
 @{
@@ -23,33 +34,42 @@
     }
     else
     {
-        <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
-            @if (!string.IsNullOrEmpty(Icon))
-            {
-                <i class="@Icon"></i>
-            }
+<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
+    @if (!string.IsNullOrEmpty(Icon))
+    {
+        <i class="@Icon"></i>
+    }
 
-            @if (ShowWordLimit)
-            {
-                <span class="ivu-input-word-count">@CurrentLength/@MaxLength</span>
-            }
+    @if (ShowWordLimit)
+    {
+        <span class="ivu-input-word-count">@CurrentLength/@MaxLength</span>
+    }
 
 
-            @if (Clearable)
-            {
-                <!--clearable -->
-                <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
-            }
+    @if (Clearable)
+    {
+        <!--clearable -->
+        <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
+    }
 
-            @if (Type == InputType.PassWord || IsEye == true)
-            {
-                <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
-                    <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
-                </span>
-            }
-            <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-            <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
-        </div>
+    @if (Type == InputType.PassWord || IsEye == true)
+    {
+        <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
+            <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
+        </span>
+    }
+    @if (!string.IsNullOrEmpty(Suffix))
+    {
+        <span class="ivu-input-suffix"><i class="@Suffix"></i></span>
+    }
+    <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+    <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
+
+    @if (!string.IsNullOrEmpty(Prefix))
+    {
+        <span class="ivu-input-prefix"><i class="@Prefix"></i></span>
+    }
+</div>
 
 
     }
@@ -96,6 +116,17 @@
     ///     图标
     /// </summary>
     [Parameter] public string Icon { get; set; }
+
+
+    /// <summary>
+    ///     前缀图标
+    /// </summary>
+    [Parameter]
+    public string Prefix { get; set; }
+    /// <summary>
+    ///     后缀图标
+    /// </summary>
+    [Parameter]public string Suffix  { get; set; }
 
     protected void OnClickClear()
     {
