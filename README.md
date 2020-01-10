@@ -5,7 +5,7 @@
 
 ## 前言
  
-StackableUi一个实现IView控件库的Blazor，一个专注于dotnet开发的Blazor Ui控件库.
+StackableUi一个实现IView控件库的Blazor库，一个专注于dotnet开发的Blazor Ui控件库.
 
 ## 代码贡献
 
