@@ -62,13 +62,18 @@
             {
                 <span class="ivu-input-suffix"><i class="@Suffix"></i></span>
             }
+
+
+
             <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
             <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
+            @ChildContent
 
             @if (!string.IsNullOrEmpty(Prefix))
             {
                 <span class="ivu-input-prefix"><i class="@Prefix"></i></span>
             }
+
         </div>
 
     }
@@ -76,6 +81,7 @@
 }
 
 @code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public string Placeholder { get; set; }
 
     [Parameter] public string Style { get; set; }

@@ -1,9 +1,9 @@
 ﻿
-@{ 
+@{
     string clas = "ivu-icon ";
     if (!string.IsNullOrEmpty(Type))
     {
-        clas += "ivu-icon-"+Type.ToLower();
+        clas += "ivu-icon-" + Type.ToLower();
     }
 
     if (!string.IsNullOrEmpty(Custom))
@@ -13,7 +13,7 @@
 
 
     string style = string.Empty;
-    if (Size>0)
+    if (Size > 0)
     {
         style += $"font-size:{Size}px;";
     }
@@ -23,8 +23,24 @@
     }
 
 }
+@if (Slot == IconSlot.suffix)
+{
+    <span class="ivu-input-suffix">
+        <i class="@clas" style="@style"></i>
+    </span>
+}
+else if (Slot == IconSlot.prefix)
+{
+    <span class="ivu-input-prefix">
+        <i class="@clas" style="@style"></i>
+    </span>
+}
+else
+{
+    <i class="@clas" style="@style"></i>
+}
 
-<i class="@clas" style="@style"></i>
+
 
 @code
 {
@@ -35,13 +51,17 @@
     /// <summary>
     ///     图标的大小，单位是 px
     /// </summary>
-    [Parameter]public int Size { get; set; }
+    [Parameter] public int Size { get; set; }
     /// <summary>
     ///     图标的颜色
     /// </summary>
-    [Parameter]public string Color { get; set; }
+    [Parameter] public string Color { get; set; }
     /// <summary>
     ///     自定义图标
     /// </summary>
-    [Parameter]public string Custom { get; set; }
+    [Parameter] public string Custom { get; set; }
+    /// <summary>
+    ///     Input前缀和后缀图标
+    /// </summary>
+    [Parameter] public IconSlot Slot { get; set; }
 }
