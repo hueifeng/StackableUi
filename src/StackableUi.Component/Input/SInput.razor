@@ -2,6 +2,7 @@
     var inputSize = "ivu-input-default";
     var prefixclas = string.Empty;
     var suffixclas = string.Empty;
+    var searchclas = string.Empty;
     if (Size != null)
     {
         inputSize = $"ivu-input-{Size.ToString().ToLower()}";
@@ -17,6 +18,10 @@
         suffixclas = "ivu-input-with-suffix";
     }
 
+    if (EnterButton)
+    {
+        searchclas = " ivu-input-group ivu-input-group-with-append ivu-input-with-search";
+    }
     var clas = $"ivu-input {inputSize} {prefixclas} {suffixclas}";
 
 }
@@ -34,47 +39,62 @@
     }
     else
     {
-        <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text" style="@Style">
-            @if (!string.IsNullOrEmpty(Icon))
-            {
-                <i class="@Icon"></i>
-            }
+<div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text @searchclas" style="@Style">
+    @if (!string.IsNullOrEmpty(Icon))
+    {
+        <i class="@Icon"></i>
+    }
 
-            @if (ShowWordLimit)
-            {
-                <span class="ivu-input-word-count">@CurrentLength/@MaxLength</span>
-            }
-
-
-            @if (Clearable)
-            {
-                <!--clearable -->
-                <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
-            }
-
-            @if (Type == InputType.PassWord || IsEye == true)
-            {
-                <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
-                    <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
-                </span>
-            }
-            @if (!string.IsNullOrEmpty(Suffix))
-            {
-                <span class="ivu-input-suffix"><i class="@Suffix"></i></span>
-            }
+    @if (ShowWordLimit)
+    {
+        <span class="ivu-input-word-count">@CurrentLength/@MaxLength</span>
+    }
 
 
+    @if (Clearable)
+    {
+        <!--clearable -->
+        <i class="ivu-icon ivu-icon-ios-close-circle ivu-input-icon ivu-input-icon-clear ivu-input-icon-normal" @onclick="OnClickClear"></i>
+    }
 
-            <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-            <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
-            @ChildContent
+    @if (Type == InputType.PassWord || IsEye == true)
+    {
+        <span class="ivu-input-suffix" @onclick="OnClickEyeAsync">
+            <i class="ivu-icon @(IsEye?"ivu-icon-ios-eye-off-outline":"ivu-icon-ios-eye-outline")"></i>
+        </span>
+    }
+    @if (!string.IsNullOrEmpty(Suffix))
+    {
+        <span class="ivu-input-suffix"><i class="@Suffix"></i></span>
+    }
+    <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
+    <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
+    @ChildContent
 
-            @if (!string.IsNullOrEmpty(Prefix))
-            {
-                <span class="ivu-input-prefix"><i class="@Prefix"></i></span>
-            }
+    @if (!string.IsNullOrEmpty(Prefix))
+    {
+        <span class="ivu-input-prefix"><i class="@Prefix"></i></span>
+    }
 
-        </div>
+    @if (Search)
+        {
+            <i class="ivu-icon ivu-icon-ios-search ivu-input-icon ivu-input-icon-normal ivu-input-search-icon"></i>
+        }
+    @if (EnterButton)
+    {
+
+        if (!string.IsNullOrEmpty(EnterButtonText))
+        {
+            <div class="ivu-input-group-append ivu-input-search">@EnterButtonText</div>
+        }
+        else
+        {
+            <div class="ivu-input-group-append ivu-input-search"><i class="ivu-icon ivu-icon-ios-search"></i></div>
+        }
+
+    }
+
+</div>
 
     }
 
@@ -127,6 +147,19 @@
     ///     后缀图标
     /// </summary>
     [Parameter] public string Suffix { get; set; }
+    /// <summary>
+    ///     开启search属性为输入框
+    /// </summary>
+    [Parameter] public bool Search { get; set; }
+
+
+    [Parameter]
+    public bool EnterButton { get; set; }
+
+     [Parameter]
+    public string EnterButtonText { get; set; }
+
+
 
     protected void OnClickClear()
     {
