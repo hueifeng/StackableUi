@@ -1,5 +1,47 @@
-﻿<h3>SIcon</h3>
+﻿
+@{ 
+    string clas = "ivu-icon ";
+    if (!string.IsNullOrEmpty(Type))
+    {
+        clas += "ivu-icon-"+Type.ToLower();
+    }
 
-@code {
+    if (!string.IsNullOrEmpty(Custom))
+    {
+        clas += Custom.ToLower();
+    }
 
+
+    string style = string.Empty;
+    if (Size>0)
+    {
+        style += $"font-size:{Size}px;";
+    }
+    if (!string.IsNullOrEmpty(Color))
+    {
+        style += $"color:{Color};";
+    }
+
+}
+
+<i class="@clas" style="@style"></i>
+
+@code
+{
+    /// <summary>
+    ///     图标的名称
+    /// </summary>
+    [Parameter] public string Type { get; set; }
+    /// <summary>
+    ///     图标的大小，单位是 px
+    /// </summary>
+    [Parameter]public int Size { get; set; }
+    /// <summary>
+    ///     图标的颜色
+    /// </summary>
+    [Parameter]public string Color { get; set; }
+    /// <summary>
+    ///     自定义图标
+    /// </summary>
+    [Parameter]public string Custom { get; set; }
 }
