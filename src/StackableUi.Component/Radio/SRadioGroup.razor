@@ -1,15 +1,31 @@
-﻿<div class="ivu-radio-group ivu-radio-group-default ivu-radio-default ivu-radio-group-vertical">
+﻿@{
+    var clas = string.Empty;
+    if (Vertical)
+    {
+        clas = "ivu-radio-group-vertical";
+    }
+
+    if (Type=="button")
+    {
+        clas += "ivu-radio-group-button";
+    }
+
+}
+
+<div class="ivu-radio-group ivu-radio-group-default ivu-radio-default @clas">
     <CascadingValue Value="@this">
         @ChildContent
         </CascadingValue>
 </div>
 
 
-
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter]public string Text { get; set; }
 
+    [Parameter]public string Type { get; set; }
+
+    [Parameter] public bool Vertical { get; set; }
 
     protected override void OnInitialized()
     {
