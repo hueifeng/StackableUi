@@ -29,7 +29,7 @@
     if (Type == InputType.TextArea)
     {
         <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-textarea" style="@Style">
-            <textarea wrap="soft" autocomplete="off" spellcheck="false" placeholder="@Placeholder" rows="@Rows" maxlength="@MaxLength" class="ivu-input"></textarea>
+            <textarea wrap="soft" autocomplete="off" disabled="@Disabled" spellcheck="false" placeholder="@Placeholder" rows="@Rows" maxlength="@MaxLength" class="ivu-input"></textarea>
 
             @if (ShowWordLimit)
             {
@@ -68,7 +68,8 @@
         <span class="ivu-input-suffix"><i class="@Suffix"></i></span>
     }
     <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
-    <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
+    <input type="@Type.ToString().ToLower()" autocomplete="off" @oninput="OnInputEventArgs" disabled="@Disabled"
+           maxlength="@MaxLength" spellcheck="false" @onfocus="OnFocusAsync" placeholder="@Placeholder" class="@clas" value="@Value">
     @ChildContent
 
     @if (!string.IsNullOrEmpty(Prefix))
@@ -163,6 +164,10 @@
     ///     rows 控制文本域默认显示的行数
     /// </summary>
     [Parameter] public int Rows { get; set; }
+    /// <summary>
+    ///     禁用
+    /// </summary>
+    [Parameter]public bool Disabled { get; set; }
 
     protected void OnClickClear()
     {
