@@ -4,16 +4,24 @@
         checkValue = RadioGroup.Text;
     }
     var ischeck = checkValue == Value;
+
+    var clasDisabled = string.Empty;
+    if (Disabled)
+    {
+        clasDisabled = "ivu-radio-disabled";
+    }
 }
+
 
 <label class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default">
     <span class="ivu-radio @(checkValue==Value?"ivu-radio-checked":"")">
-        <span class="ivu-radio-inner "></span>
-        <input type="radio" class="ivu-radio-input" @onclick="OnRadioChanged" value="@Value">
+        <span class="ivu-radio @clasDisabled">
+            <span class="ivu-radio-inner "></span>
+            <input type="radio" disabled="@Disabled" class="ivu-radio-input" @onclick="OnRadioChanged" value="@Value">
+        </span>
     </span>
     @ChildContent
 </label>
-
 
 @code {
 
@@ -21,12 +29,15 @@
 
     private string changedclas = string.Empty;
 
+    [Parameter]
+    public bool Disabled { get; set; }
+
 
     [CascadingParameter]
-    public SRadioGroup RadioGroup { get; set; }
+    private SRadioGroup RadioGroup { get; set; }
 
 
-    public string checkValue { get; set; }
+    private string checkValue { get; set; }
 
     /// <summary>
     ///     值
