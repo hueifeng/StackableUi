@@ -9,4 +9,21 @@
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter]public string Text { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+
+
+        base.OnInitialized();
+    }
+    internal bool TrySetValue(string value, bool requireRefresh)
+    {
+        Text = value;
+        if (requireRefresh)
+        {
+            StateHasChanged();
+        }
+        return true;
+    }
 }

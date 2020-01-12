@@ -1,7 +1,15 @@
-﻿<label class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default">
-    <span class="ivu-radio @changedclas">
+﻿@{
+    if (RadioGroup != null)
+    {
+        checkValue = RadioGroup.Text;
+    }
+    var ischeck = checkValue == Value;
+}
+
+<label class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default">
+    <span class="ivu-radio @(checkValue==Value?"ivu-radio-checked":"")">
         <span class="ivu-radio-inner "></span>
-        <input type="radio" class="ivu-radio-input" @onclick="OnRadioChanged" name="1" checked="@checkedValue"> 
+        <input type="radio" class="ivu-radio-input" @onclick="OnRadioChanged" value="@Value">
     </span>
     @ChildContent
 </label>
@@ -13,12 +21,37 @@
 
     private string changedclas = string.Empty;
 
-    protected void OnRadioChanged()
+
+    [CascadingParameter]
+    public SRadioGroup RadioGroup { get; set; }
+
+
+    public string checkValue { get; set; }
+
+    /// <summary>
+    ///     值
+    /// </summary>
+    [Parameter] public string Value { get; set; }
+    /// <summary>
+    /// 当选择的值发生改变时触发
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> SelectedValueChanged { get; set; }
+
+    protected void OnRadioChanged(MouseEventArgs args)
     {
-        changedclas= "ivu-radio-checked";
+
+        if (RadioGroup != null)
+        {
+            _ = RadioGroup.TrySetValue(Value, !SelectedValueChanged.HasDelegate);
+            return;
+        }
+
+        if (SelectedValueChanged.HasDelegate)
+        {
+            _ = SelectedValueChanged.InvokeAsync(Value);
+        }
+        checkValue = Value;
     }
 
-    protected void ChangeRadio(MouseEventArgs e) {
-
-    }
 }
