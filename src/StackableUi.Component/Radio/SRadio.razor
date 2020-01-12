@@ -1,15 +1,11 @@
-﻿@{
-
-}
-
-
-<label class="ivu-radio-wrapper ivu-radio-wrapper-checked ivu-radio-default">
+﻿<label class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default">
     <span class="ivu-radio @changedclas">
         <span class="ivu-radio-inner "></span>
-        <input type="radio" class="ivu-radio-input" @onclick="OnRadioChanged">
+        <input type="radio" class="ivu-radio-input" @onclick="OnRadioChanged" name="1" checked="@checkedValue"> 
     </span>
     @ChildContent
 </label>
+
 
 @code {
 
@@ -19,6 +15,10 @@
 
     protected void OnRadioChanged()
     {
-         changedclas= "ivu-radio-checked";
+        changedclas= "ivu-radio-checked";
+    }
+
+    protected void ChangeRadio(MouseEventArgs e) {
+
     }
 }

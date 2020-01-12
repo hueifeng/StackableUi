@@ -10,8 +10,6 @@
     {
         clas += Custom.ToLower();
     }
-
-
     string style = string.Empty;
     if (Size > 0)
     {
@@ -63,5 +61,5 @@ else
     /// <summary>
     ///     Input前缀和后缀图标
     /// </summary>
-    [Parameter] public IconSlot Slot { get; set; }
+    [Parameter] public IconSlot? Slot { get; set; }
 }

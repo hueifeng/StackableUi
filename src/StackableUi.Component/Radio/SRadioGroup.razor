@@ -1,11 +1,12 @@
-﻿<div data-v-b76fc248="" name="ivuRadioGroup_1577873729142_1" class="ivu-radio-group ivu-radio-group-default ivu-radio-default">
-    <label data-v-b76fc248="" class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default"><span class="ivu-radio">
-        <span class="ivu-radio-inner"></span> <input type="radio" class="ivu-radio-input" name="ivuRadioGroup_1577873729142_1">
-      </span><i data-v-b76fc248="" class="ivu-icon ivu-icon-logo-apple"></i> <span data-v-b76fc248="">Apple</span></label>
+﻿<div class="ivu-radio-group ivu-radio-group-default ivu-radio-default">
+    <CascadingValue Value="@this">
+        @ChildContent
+        </CascadingValue>
 </div>
 
 
 
 @code {
-   [Parameter]public string Text { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter]public string Text { get; set; }
 }
