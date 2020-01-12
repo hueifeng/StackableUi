@@ -29,7 +29,7 @@
     if (Type == InputType.TextArea)
     {
         <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-textarea" style="@Style">
-            <textarea wrap="soft" autocomplete="off" spellcheck="false" placeholder="@Placeholder" rows="2" maxlength="@MaxLength" class="ivu-input"></textarea>
+            <textarea wrap="soft" autocomplete="off" spellcheck="false" placeholder="@Placeholder" rows="@Rows" maxlength="@MaxLength" class="ivu-input"></textarea>
 
             @if (ShowWordLimit)
             {
@@ -156,10 +156,13 @@
     [Parameter]
     public bool EnterButton { get; set; }
 
-     [Parameter]
+    [Parameter]
     public string EnterButtonText { get; set; }
 
-
+    /// <summary>
+    ///     rows 控制文本域默认显示的行数
+    /// </summary>
+    [Parameter] public int Rows { get; set; }
 
     protected void OnClickClear()
     {
