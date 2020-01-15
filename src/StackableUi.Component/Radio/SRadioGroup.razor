@@ -10,9 +10,21 @@
         clas += "ivu-radio-group-button";
     }
 
+    switch (Size)
+    {
+        case RadioSize.Large:
+            clas += " ivu-radio-group-large ivu-radio-large";
+            break;
+        case RadioSize.Small:
+            clas += " ivu-radio-group-small ivu-radio-small";
+            break;
+        default:
+            break;
+    }
+
 }
 
-<div class="ivu-radio-group ivu-radio-group-default ivu-radio-default @clas">
+<div class="ivu-radio-group ivu-radio-group-default ivu-radio-default @clas ">
     <CascadingValue Value="@this">
         @ChildContent
         </CascadingValue>
@@ -26,6 +38,8 @@
     [Parameter]public string Type { get; set; }
 
     [Parameter] public bool Vertical { get; set; }
+
+    [Parameter] public RadioSize Size { get; set; }
 
     protected override void OnInitialized()
     {
