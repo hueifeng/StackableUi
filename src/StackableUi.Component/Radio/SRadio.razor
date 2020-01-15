@@ -12,7 +12,7 @@
     }
 }
 
-<label  @onclick="OnRadioChanged"  class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default @(Disabled?"ivu-radio-wrapper-disabled":"")  @(checkValue==Value?"ivu-radio-wrapper-checked":"")  ">
+<label  @onclick="OnRadioChanged"  class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default @(Border?"ivu-radio-border":"") @(Disabled?"ivu-radio-wrapper-disabled":"")  @(checkValue==Value?"ivu-radio-wrapper-checked":"")  ">
     <span class="ivu-radio @(checkValue==Value?"ivu-radio-checked":"")">
         <span class="ivu-radio @clasDisabled">
             <span class="ivu-radio-inner"></span>
@@ -22,12 +22,17 @@
     @ChildContent
 </label>
 
+
 @code {
 
     [Parameter] public RenderFragment ChildContent { get; set; }
 
     private string changedclas = string.Empty;
-
+    /// <summary>
+    ///     可以显示边框
+    /// </summary>
+    [Parameter]
+    public bool Border { get; set; }
     [Parameter]
     public bool Disabled { get; set; }
 
