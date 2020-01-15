@@ -12,12 +12,11 @@
     }
 }
 
-
-<label  @onclick="OnRadioChanged"  class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default  @(checkValue==Value?"ivu-radio-wrapper-checked":"")  ">
+<label  @onclick="OnRadioChanged"  class="ivu-radio-wrapper ivu-radio-group-item ivu-radio-default @(Disabled?"ivu-radio-wrapper-disabled":"")  @(checkValue==Value?"ivu-radio-wrapper-checked":"")  ">
     <span class="ivu-radio @(checkValue==Value?"ivu-radio-checked":"")">
         <span class="ivu-radio @clasDisabled">
-            <span class="ivu-radio-inner "></span>
-            <input type="radio" disabled="@Disabled" class="ivu-radio-input" value="@Value">
+            <span class="ivu-radio-inner"></span>
+            <input type="radio" disabled="@(Disabled?"disabled":"")" class="ivu-radio-input" value="@Value">
         </span>
     </span>
     @ChildContent
@@ -51,7 +50,10 @@
 
     protected void OnRadioChanged(MouseEventArgs args)
     {
-
+        if (Disabled)
+        {
+            return;
+        }
         if (RadioGroup != null)
         {
             _ = RadioGroup.TrySetValue(Value, !SelectedValueChanged.HasDelegate);
