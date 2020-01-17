@@ -1,7 +1,7 @@
 ## StackableUi
 
 ![LICENSE](https://img.shields.io/github/license/hueifeng/StackableUi)
-[![Build Status](https://dev.azure.com/HueiFeng/StackableUi/_apis/build/status/hueifeng.StackableUi?branchName=master)](https://dev.azure.com/HueiFeng/StackableUi/_build/latest?definitionId=3&branchName=master)
+[![Build Status](https://stackable.visualstudio.com/stackableui/_apis/build/status/stackableui-dev-as%20-%20CI?branchName=master)](https://stackable.visualstudio.com/stackableui/_build/latest?definitionId=2&branchName=master)
 
 ## 前言
  
