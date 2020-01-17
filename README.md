@@ -9,7 +9,7 @@ StackableUi一个实现IView控件库的Blazor库，一个专注于dotnet开发�
 
 ## 在线预览
 
-* [在线预览](https://stackable.cn/)
+[在线预览](https://stackable.cn/)
 
 ## 代码贡献
 
