@@ -13,14 +13,32 @@
 <span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
     <input type="hidden" value="false">
     <span class="ivu-switch-inner">
+        @if (!(string.IsNullOrEmpty(SlotOpenText)&&string.IsNullOrEmpty(SlotCloseText)))
+        {
+            <span>@(IsChecked?SlotOpenText:SlotCloseText)</span>
+        }
+       
+
     </span>
 </span>
 @code{
 
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
     private bool IsChecked { get; set; }
 
     [Parameter]
     public SwitchSize? Size { get; set; }
+    /// <summary>
+    ///     打开时内容
+    /// </summary>
+    [Parameter]
+    public string SlotOpenText { get; set; }
+    /// <summary>
+    ///     关闭时内容
+    /// </summary>
+    [Parameter]
+    public string SlotCloseText { get; set; }
 
     protected void OnClick(MouseEventArgs args)
     {
