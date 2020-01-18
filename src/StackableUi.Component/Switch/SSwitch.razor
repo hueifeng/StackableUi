@@ -9,6 +9,10 @@
     {
         clas += $"ivu-switch-{Size.ToString().ToLower()} ";
     }
+    if (Disabled)
+    {
+        clas += " ivu-switch-disabled ";
+    }
 }
 <span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
     <input type="hidden" value="false">
@@ -39,9 +43,18 @@
     /// </summary>
     [Parameter]
     public string SlotCloseText { get; set; }
+    /// <summary>
+    ///     禁用开关
+    /// </summary>
+    [Parameter]
+    public bool Disabled{ get; set; }
 
     protected void OnClick(MouseEventArgs args)
     {
+        if (Disabled)
+        {
+            return;
+        }
         IsChecked = IsChecked != true;
     }
 }
