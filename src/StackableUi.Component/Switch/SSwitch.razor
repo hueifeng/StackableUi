@@ -1,0 +1,22 @@
+﻿@{
+    var clas = string.Empty;
+
+    if (IsChecked)
+    {
+        clas += "  ivu-switch-checked";
+    }
+}
+<span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
+    <input type="hidden" value="false">
+    <span class="ivu-switch-inner">
+    </span>
+</span>
+@code{
+
+    private bool IsChecked { get; set; }
+
+    protected void OnClick(MouseEventArgs args)
+    {
+        IsChecked = IsChecked != true;
+    }
+}
