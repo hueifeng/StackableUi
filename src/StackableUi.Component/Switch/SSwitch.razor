@@ -13,6 +13,11 @@
     {
         clas += " ivu-switch-disabled ";
     }
+    if (Loading)
+    {
+        clas += " ivu-switch-loading ";
+    }
+
 }
 <span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
     <input type="hidden" value="false">
@@ -48,10 +53,19 @@
     /// </summary>
     [Parameter]
     public bool Disabled{ get; set; }
+    /// <summary>
+    ///     加载中
+    /// </summary>
+    [Parameter]
+    public bool Loading { get; set; }
 
     protected void OnClick(MouseEventArgs args)
     {
         if (Disabled)
+        {
+            return;
+        }
+        if (Loading)
         {
             return;
         }
