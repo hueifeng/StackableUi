@@ -3,7 +3,11 @@
 
     if (IsChecked)
     {
-        clas += "  ivu-switch-checked";
+        clas += "  ivu-switch-checked ";
+    }
+    if (Size!=null)
+    {
+        clas += $"ivu-switch-{Size.ToString().ToLower()} ";
     }
 }
 <span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
@@ -14,6 +18,9 @@
 @code{
 
     private bool IsChecked { get; set; }
+
+    [Parameter]
+    public SwitchSize? Size { get; set; }
 
     protected void OnClick(MouseEventArgs args)
     {
