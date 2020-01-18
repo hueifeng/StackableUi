@@ -1,58 +1,96 @@
 ﻿@inherits LayoutComponentBase
 <div class="wrapper">
-<div class="wrapper-header">
-    <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
-        <div class="wrapper-header-nav">
-            <a href="/" class="wrapper-header-nav-logo router-link-active"><img src="https://file.iviewui.com/dist/7dcf5af41fac2e4728549fa7e73d61c5.svg"></a> <div class="apps">
-                <div class="ivu-dropdown">
-                    <div class="ivu-dropdown-rel">
-                        <button type="button" class="ivu-btn ivu-btn-text">
-                            <span>
-                                Stackable UI
-                                <i class="apps-arrow ivu-icon ivu-icon-ios-arrow-down"></i>
-                            </span>
-                        </button>
-                    </div> 
-                </div>
-            </div> <div class="wrapper-header-nav-search">
-                <div class="ivu-select ivu-select-single ivu-select-default">
-                    <div tabindex="-1" class="ivu-select-selection">
-                        <input type="hidden"> <div class="">
-                            <span class="" style="display: none;"></span>
-                            <input type="text" placeholder="搜索组件..." autocomplete="off" spellcheck="false" class="ivu-select-input">
-                            <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i>
+    <div class="wrapper-header">
+        <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
+            <div class="wrapper-header-nav">
+                <a href="/" class="wrapper-header-nav-logo router-link-active"><img src="https://file.iviewui.com/dist/7dcf5af41fac2e4728549fa7e73d61c5.svg"></a> <div class="apps">
+                    <div class="ivu-dropdown">
+                        <div class="ivu-dropdown-rel">
+                            <button type="button" class="ivu-btn ivu-btn-text">
+                                <span>
+                                    Stackable UI
+                                    <i class="apps-arrow ivu-icon ivu-icon-ios-arrow-down"></i>
+                                </span>
+                            </button>
                         </div>
                     </div>
-                   
+                </div> <div class="wrapper-header-nav-search">
+                    <div class="ivu-select ivu-select-single ivu-select-default">
+                        <div tabindex="-1" class="ivu-select-selection">
+                            <input type="hidden"> <div class="">
+                                <span class="" style="display: none;"></span>
+                                <input type="text" placeholder="搜索组件..." autocomplete="off" spellcheck="false" class="ivu-select-input">
+                                <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="wrapper-header-nav-list">
+                    <a href="https://en.wikipedia.org/wiki/Blazor" target="_self" class="ivu-menu-item">
+                        Blazor
+                    </a> <a href="https://www.iviewui.com/" target="_self" class="ivu-menu-item">
+                        Iview UI
+                    </a>
+                    <a href="https://github.com/hueifeng/StackableUi" target="_self" class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
+                        GitHub
+                    </a>
                 </div>
             </div>
-                   <div class="wrapper-header-nav-list">
-                       <a href="https://en.wikipedia.org/wiki/Blazor" target="_self" class="ivu-menu-item">
-                           Blazor
-                       </a> <a href="https://www.iviewui.com/" target="_self" class="ivu-menu-item">
-                           Iview UI
-                       </a>
-                            <a href="https://github.com/hueifeng/StackableUi" target="_self" class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                GitHub
-                            </a>
-                   </div>
-        </div>
-    </ul>
-</div> <div class="wrapper-container">
-   <div class="ivu-row">
-        <div class="wrapper-navigate ivu-col ivu-col-span-4">
-            <div data-v-39279dfe="" class="navigate">
-                <NavMenu />
+        </ul>
+    </div> <div class="wrapper-container">
+        <div class="ivu-row">
+            <div class="wrapper-navigate ivu-col ivu-col-span-4">
+                <div data-v-39279dfe="" class="navigate">
+                    <NavMenu />
+                </div>
+            </div>
+            <div class="ivu-col ivu-col-span-17">
+                <div class="wrapper-content ivu-article">
+                    @Body
+                </div>
+            </div>
+            <div class="ivu-col ivu-col-span-3">
+
             </div>
         </div>
-        <div class="ivu-col ivu-col-span-17">
-            <div class="wrapper-content ivu-article">
-                @Body
-            </div>
-        </div>
-        <div class="ivu-col ivu-col-span-3">
-           
-            </div>
     </div>
 </div>
+
+<div class="footer">
+    <div class="footer-main">
+        <div class="ivu-row">
+            <div class="ivu-col ivu-col-span-5">
+                <h4>
+                    <i class="ivu-icon ivu-icon-logo-github"></i>
+                    GitHub
+                </h4>
+                <ul>
+                    <li><a href="https://github.com/view-design/ViewUI" target="_blank">View UI</a></li>
+                    <li><a href="https://github.com/hueifeng/StackableUi" target="_blank">Stackable UI</a></li>
+                </ul>
+            </div> <div class="ivu-col ivu-col-span-5">
+                <h4>
+                    <i class="ivu-icon ivu-icon-ios-link"></i>
+                    社区
+                </h4>
+                <ul>
+                </ul>
+            </div> <div class="ivu-col ivu-col-span-5 ivu-col-offset-2">
+                <h4>
+                    <i class="ivu-icon ivu-icon-ios-chatbubbles"></i>
+                    帮助
+                </h4>
+                <ul>
+                </ul>
+            </div>
+            <div class="ivu-col ivu-col-span-5 ivu-col-offset-2">
+                <div class="footer-aside">
+                    <div class="footer-logo"><img src="https://file.iviewui.com/dist/d6fcbeecd3f5ff1b1dd0a0f68bdf6ce7.svg"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div> <div class="footer-copyright"><p>Copyright © 2020 Stackable</p></div>
 </div>
