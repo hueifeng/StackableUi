@@ -1,5 +1,6 @@
 ﻿@{
     var clas = string.Empty;
+    var style = string.Empty;
 
     if (IsChecked)
     {
@@ -18,8 +19,24 @@
         clas += " ivu-switch-loading ";
     }
 
+    if (IsChecked)
+    {
+        if (!string.IsNullOrEmpty(TrueColor))
+        {
+            style += $"border-color: {TrueColor};background-color: {TrueColor};";
+        }
+    }
+    else
+    {
+        if (!string.IsNullOrEmpty(FalseColor))
+        {
+            style += $"border-color: {FalseColor};background-color:{FalseColor}";
+        }
+
+    }
+
 }
-<span tabindex="0" class="ivu-switch @clas" @onclick="OnClick">
+<span tabindex="0" class="ivu-switch @clas" @onclick="OnClick" style="@style">
     <input type="hidden" value="false">
     <span class="ivu-switch-inner">
         @if (!(string.IsNullOrEmpty(SlotOpenText)&&string.IsNullOrEmpty(SlotCloseText)))
@@ -58,6 +75,16 @@
     /// </summary>
     [Parameter]
     public bool Loading { get; set; }
+    /// <summary>
+    ///     自定义背景色
+    /// </summary>
+    [Parameter]
+    public string TrueColor { get; set; }
+    /// <summary>
+    ///     自定义背景色
+    /// </summary>
+    [Parameter]
+    public string FalseColor { get; set; }
 
     protected void OnClick(MouseEventArgs args)
     {
