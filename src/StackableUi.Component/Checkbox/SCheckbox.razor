@@ -1,4 +1,42 @@
-﻿<label data-v-5cb2b31c="" class="ivu-checkbox-wrapper ivu-checkbox-default">
-    <span class="ivu-checkbox"><span class="ivu-checkbox-inner"></span> 
-    <input type="checkbox" class="ivu-checkbox-input"></span>
-    Checkbox</label>
+﻿@{
+    var clas=string.Empty;
+    if (IsChecked)
+    {
+        clas+=" ivu-checkbox-checked";
+    }
+    if (Disabled)
+    {
+        clas+=" ivu-checkbox-disabled";
+    }
+}
+
+<label class="ivu-checkbox-wrapper ivu-checkbox-default  @(Border?"ivu-checkbox-border":"")" @onclick="OnClick">
+    <span class="ivu-checkbox @clas"><span class="ivu-checkbox-inner"></span> 
+    <input type="checkbox" class="ivu-checkbox-input" disabled="@(Disabled?"disabled":"")" ></span>
+    @ChildContent</label>
+
+@code{
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    private bool IsChecked { get; set; }
+
+    /// <summary>
+    ///     不可用
+    /// </summary>
+    [Parameter]
+    public bool Disabled{ get; set; }
+
+    ///<summary>
+    /// 显示边框
+    ///</summary>    
+    [Parameter]
+    public bool Border { get; set; }
+
+    protected void OnClick(MouseEventArgs args)
+    {
+        if (Disabled)
+        {
+            return;
+        }
+        IsChecked = IsChecked != true;
+    }
+}
