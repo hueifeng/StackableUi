@@ -1,0 +1,44 @@
+﻿@{
+    var clas = string.Empty;
+
+}
+<div class="ivu-select ivu-select-single ivu-select-default" @onclick="OnSelectClick">
+    <div tabindex="0" class="ivu-select-selection">
+        <input type="hidden" value="London">
+        <div class="">
+            <span class="ivu-select-selected-value">London</span>
+            <i class="ivu-icon ivu-icon-ios-arrow-down ivu-select-arrow"></i>
+        </div>
+    </div>
+    <div class="ivu-select-dropdown"
+         style="min-width: 200px; position: absolute; will-change: top, left; transform-origin: center top; top: 52px; left: 20px;@(IsDropDown?"":"display:none")" x-placement="bottom-start">
+        <ul class="ivu-select-not-found" style="display:none;">
+            <li>无匹配数据</li>
+        </ul>
+        <ul class="ivu-select-dropdown-list">
+            @ChildContent
+            @*<li class="ivu-select-item">New York</li>
+            <li class="ivu-select-item ivu-select-item-selected ivu-select-item-focus">London</li>
+            <li class="ivu-select-item">Sydney</li>
+            <li class="ivu-select-item">Ottawa</li>
+            <li class="ivu-select-item">Paris</li>
+            <li class="ivu-select-item">Canberra</li>*@
+        </ul>
+        <ul class="ivu-select-loading" style="display: none;">加载中</ul>
+    </div>
+</div>
+
+@code{
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    /// <summary>
+    ///     是否展开
+    /// </summary>
+    private bool IsDropDown { get; set; }
+
+    protected void OnSelectClick(MouseEventArgs args)
+    {
+        IsDropDown = IsDropDown != true;
+    }
+
+}
