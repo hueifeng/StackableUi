@@ -1,1 +1,27 @@
-﻿<li class="ivu-select-item">New York</li>
+﻿
+<li class="ivu-select-item"  @onclick="onClick">@Value</li>
+
+@code{
+
+    [CascadingParameter]
+    private SSelect SSelect { get; set; }
+      /// <summary>
+    ///     值
+    /// </summary>
+    [Parameter]
+    public string Value { get; set; }
+       /// <summary>
+    /// 当选择的值发生改变时触发
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> SelectedValueChanged { get; set; }
+    protected void onClick(MouseEventArgs args)
+    {
+      if (SSelect != null)
+        {
+            _ = SSelect.TrySetValue(Value, !SelectedValueChanged.HasDelegate);
+            return;
+        }
+    }
+
+}
