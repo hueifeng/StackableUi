@@ -1,8 +1,11 @@
 ﻿@{
     var clas = string.Empty;
-
+    if (Size!=null)
+    {
+        clas+=$" ivu-select-{Size.ToString().ToLower()}";
+    }
 }
-<div class="ivu-select ivu-select-single ivu-select-default" @onclick="OnSelectClick">
+<div class="ivu-select ivu-select-single @clas" @onclick="OnSelectClick">
     <CascadingValue Value="@this">
     <div tabindex="0" class="ivu-select-selection">
         <div class="">
@@ -26,6 +29,11 @@
 @code{
     private string  Text{get;set;}
     [Parameter] public RenderFragment ChildContent { get; set; }
+    ///<summary>
+    /// 尺寸
+    ///</summary>
+    [Parameter]
+    public SelectSize? Size { get; set; }=SelectSize.Default;
     /// <summary>
     ///     是否展开
     /// </summary>
