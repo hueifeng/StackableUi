@@ -4,6 +4,10 @@
     {
         clas+=$" ivu-select-{Size.ToString().ToLower()}";
     }
+    if (Disabled)
+    {
+        clas+= " ivu-select-disabled";
+    }
 }
 <div class="ivu-select ivu-select-single @clas" @onclick="OnSelectClick">
     <CascadingValue Value="@this">
@@ -39,8 +43,17 @@
     /// </summary>
     private bool IsDropDown { get; set; }
 
+    ///<summary>
+    ///     禁用
+    ///</summary>
+    [Parameter]
+    public bool Disabled { get; set; }
     protected void OnSelectClick(MouseEventArgs args)
     {
+        if (Disabled)
+        {
+            return;
+        }
         IsDropDown = IsDropDown != true;
     }
    internal bool TrySetValue(string value, bool requireRefresh)

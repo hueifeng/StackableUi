@@ -1,5 +1,12 @@
-﻿
-<li class="ivu-select-item"  @onclick="onClick">@Value</li>
+﻿@{
+    var clas=string.Empty;
+    if (Disabled)
+    {
+        clas+=" ivu-select-item-disabled";
+    }
+}
+
+<li class="ivu-select-item @clas"  @onclick="onClick">@Value</li>
 
 @code{
 
@@ -15,8 +22,18 @@
     /// </summary>
     [Parameter]
     public EventCallback<string> SelectedValueChanged { get; set; }
+
+    ///<summary>
+    ///     禁用
+    ///</summary>
+    [Parameter]
+    public bool Disabled { get; set; }
     protected void onClick(MouseEventArgs args)
     {
+        if (Disabled)
+        {
+            return;
+        }
       if (SSelect != null)
         {
             _ = SSelect.TrySetValue(Value, !SelectedValueChanged.HasDelegate);
