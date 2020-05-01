@@ -7,8 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["samples/StackableUi.Samples.csproj", "samples/StackableUi.Samples/"]
-RUN dotnet restore "samples/StackableUi.Samples.csproj"
+COPY ["src/StackableUi.Component/StackableUi.Component.csproj", "src/StackableUi.Component/"]
+COPY ["samples/StackableUi.Samples/StackableUi.Samples.csproj", "samples/StackableUi.Samples/"]
+RUN dotnet restore "samples/StackableUi.Samples/StackableUi.Samples.csproj"
 COPY . .
 WORKDIR "/samples/StackableUi.Samples"
 RUN dotnet build "StackableUi.Samples.csproj" -c Release -o /app/build
