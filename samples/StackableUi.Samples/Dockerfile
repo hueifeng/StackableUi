@@ -11,7 +11,7 @@ COPY ["src/StackableUi.Component/StackableUi.Component.csproj", "src/StackableUi
 COPY ["samples/StackableUi.Samples/StackableUi.Samples.csproj", "samples/StackableUi.Samples/"]
 RUN dotnet restore "samples/StackableUi.Samples/StackableUi.Samples.csproj"
 COPY . .
-WORKDIR "/samples/StackableUi.Samples"
+WORKDIR "/src/samples/StackableUi.Samples"
 RUN dotnet build "StackableUi.Samples.csproj" -c Release -o /app/build
 
 FROM build AS publish
